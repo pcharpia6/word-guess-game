@@ -52,10 +52,25 @@ var guessArray = [];
 var wordArrayRNG = "";
 var wordProperty = "";
 var arrayLength = "";
-var blankArray = [];
+var blankArray = []; // initial blanks, fill with answers
 var keyPress = "";
 var keyTruth = "";
-var wordSplit = "";
+var wordSplit = []; // array of word letters
+var truth = "";
+var guessRemain = 8;
+
+function reset() {
+    guessArray = [];
+    wordArrayRNG = "";
+    wordProperty = "";
+    arrayLength = "";
+    blankArray = []; // initial blanks, fill with answers
+    keyPress = "";
+    keyTruth = "";
+    wordSplit = []; // array of word letters
+    truth = false;
+    startGame();
+}
 
 function chooseWord() {
     // RNG to pull from array
@@ -90,14 +105,15 @@ function displayUp() {
     document.getElementById("word").innerHTML = "";
     document.getElementById("let-guess1").innerHTML = "Letters Guessed:";
     document.getElementById("let-guess2").innerHTML = "";
-    document.getElementById("guess-rem").innerHTML = "";
+    document.getElementById("guess-rem1").innerHTML = "Attempts Remaining";
+    document.getElementById("guess-rem2").innerHTML = guessRemain;
+    document.getElementById("try-again").innerHTML = "";
     chooseWord();
     mkDisplay();
     document.onkeyup = function(event) {
         logKey();
         chkKey();
     }
-    
 }
 
 function startGame() {
@@ -106,7 +122,9 @@ function startGame() {
     document.getElementById("word").innerHTML = "";
     document.getElementById("let-guess1").innerHTML = "";
     document.getElementById("let-guess2").innerHTML = "";
-    document.getElementById("guess-rem").innerHTML = "";
+    document.getElementById("guess-rem1").innerHTML = "";
+    document.getElementById("guess-rem2").innerHTML = "";
+    document.getElementById("try-again").innerHTML = "";
 
     document.onkeyup = function(event) {
         displayUp();
@@ -115,27 +133,33 @@ function startGame() {
 }
 
 function logKey() {
+    console.log("logKey")
     // Begin logic to capture keypress event for guess and store/display.
     console.log(event.key);
     keyPress = event.key.toLowerCase();
+    // is the input a letter in the alphabet?
     keyTruth = alphabet.includes(keyPress);
     console.log(keyTruth);
 }
 
 function chkKey() {
-    // is the input a letter in the alphabet?
+    console.log("chkKey");
     if (keyTruth === true) {
         wordSplit = wordProperty.split("");
         console.log(wordProperty);
         console.log("word split contains: " + wordSplit);
         if (wordSplit.includes(keyPress)) {
-            actKey() 
+            actKeyYes() 
+        }
+        else {
+            actKeyNo()
         }
     }
 }
 
-function actKey() {
-            // insert the chosen letter into the correct place in the blankArray
+function actKeyYes() {
+    // insert the chosen letter into the correct place in the blankArray
+    console.log("actKeyYes");
     for (var i = 0; i < wordSplit.length; i++)  {
         if (wordSplit[i] == keyPress) {
             blankArray[i] = keyPress;
@@ -143,20 +167,37 @@ function actKey() {
             document.getElementById("word").innerHTML = blankArray.join("");
         }
     }
-    ### {
-        alert("Try again bub.");
-        if (keyTruth === true) {
-            if (guessArray.includes(keyPress)) {
+    if (guessArray.includes(keyPress)) {}
 
-            }
-            else {
-            guessArray.push(keyPress);
-            document.getElementById("let-guess2").innerHTML = guessArray;
-            }
-        }
+    else {
+    guessArray.push(keyPress);
+    document.getElementById("let-guess2").innerHTML = guessArray;
     }
-           
+
+    if (blankArray.join("") == wordSplit.join("")) {
+        alert("You win!");
+        reset();
+    }    
 }   
 
+function actKeyNo() {
+    console.log("actKeyNo");
+    if (guessArray.includes(keyPress)) {
+        document.getElementById("try-again").innerHTML = "Guess again!";
+    }
+
+    else {
+        guessArray.push(keyPress);
+        document.getElementById("let-guess2").innerHTML = guessArray;
+        document.getElementById("try-again").innerHTML = "Guess again!";
+        guessRemain--;
+        document.getElementById("guess-rem2").innerHTML = guessRemain;
+        if (guessRemain == 0) {
+            alert("You Lose! The correct answer was " + wordSplit.join("") + ".");
+            reset();
+        }
+    }
+
+}
         
 startGame();
