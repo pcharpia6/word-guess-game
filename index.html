@@ -7,6 +7,7 @@
     <title>Word Guess</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
 </head>
 <body>
     <div class="jumbotron jumbotron-fluid">
@@ -16,8 +17,8 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
+    <div class="d-flex justify-content-between row">
+        <div class="col-md-2">
             <ol class="rules">
                 <lh>Rules</lh>
                 <li>Use the hint to help you guess letters in the word.</li>
@@ -36,9 +37,13 @@
         <div class="col-md-3">
             <h2 id="guess-rem1"></h2>
             <h3 id="guess-rem2"></h3>
+            <h2 id="wins1"></h2>
+            <h3 id="wins2"></h3>
         </div>
     </div>
-
+    <audio id="myAudio">
+        <source src="assets/yay.mp3" type="audio/mpeg">
+    </audio>
     <script src="assets/javascript/game.js"></script>
 </body>
 </html>

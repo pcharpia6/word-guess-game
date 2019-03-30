@@ -58,6 +58,8 @@ var keyTruth = "";
 var wordSplit = []; // array of word letters
 var truth = "";
 var guessRemain = 8;
+var wins = 0;
+var audioElement = document.getElementById("myAudio");
 
 function reset() {
     guessArray = [];
@@ -175,7 +177,11 @@ function actKeyYes() {
     }
 
     if (blankArray.join("") == wordSplit.join("")) {
+        audioElement.play();
         alert("You win!");
+        wins++;
+        document.getElementById("wins1").innerHTML = "Wins:";
+        document.getElementById("wins2").innerHTML = wins;
         reset();
     }    
 }   

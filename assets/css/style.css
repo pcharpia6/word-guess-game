@@ -1,4 +1,9 @@
+body {
+    font-family: "Germania One";
+}
+
 .jumbotron {
     background-image: url(../images/background.jpg);
     background-size: 100%;
 }
+
