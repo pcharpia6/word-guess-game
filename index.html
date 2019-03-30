@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
 </head>
-<body>
+<body class="text-light">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4 text-center font-weight-bold">Welcome to the Word Guess Game!</h1>
@@ -17,16 +17,16 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-between row">
-        <div class="col-md-2">
-            <ol class="rules">
+    <div class="d-flex justify-content-around row">
+        <div class="col-md-3 rules">
+            <ol>
                 <lh>Rules</lh>
                 <li>Use the hint to help you guess letters in the word.</li>
                 <li>The length of the word is denoted by the number of blanks.</li>
                 <li>You get 8 attempts.</li>
             </ol>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3 game">
             <h2 id="clue1"></h2>
             <h3 id="clue2"></h2>
             <h4 id="word"></h3>
@@ -34,7 +34,7 @@
             <h5 id="let-guess2"></h5>
             <h5 id="try-again"></h5>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2 text-center track">
             <h2 id="guess-rem1"></h2>
             <h3 id="guess-rem2"></h3>
             <h2 id="wins1"></h2>

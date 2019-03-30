@@ -76,7 +76,7 @@ function reset() {
 
 function chooseWord() {
     // RNG to pull from array
-    wordArrayRNG = Math.floor((Math.random() * 10) + 0);
+    wordArrayRNG = Math.floor((Math.random() * 11) + 0);
     console.log("Random number generator created = " + wordArrayRNG);
     // Verify the wordArray[wordArrayRNG] functions
     wordProperty = wordArray[wordArrayRNG];

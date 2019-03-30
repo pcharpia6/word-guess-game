@@ -1,9 +1,42 @@
 body {
     font-family: "Germania One";
-}
-
-.jumbotron {
     background-image: url(../images/background.jpg);
     background-size: 100%;
 }
 
+.jumbotron {
+    background: transparent;
+}
+
+.display-4 {
+    background-color: #666666;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.lead {
+    background-color: #666666;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 30%;
+    margin: auto;
+}
+
+.rules {
+    background-color: #666666;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.game {
+    background-color: #666666;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.track {
+    background-color: #666666;
+    border-radius: 10px;
+    border: 2px solid black;
+}
